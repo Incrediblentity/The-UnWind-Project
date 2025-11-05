@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unwind Project</title>
+    
+    <!-- 1. Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Load Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 3. Link to your new stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-emerald-50 text-emerald-900 min-h-screen antialiased">
+
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto p-4 md:p-8">
+        
+        <!-- Header & Navigation -->
+        <header class="border-b-2 border-emerald-200 pb-6 mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800">The Unwind Project</h1>
+            <p class="text-lg text-emerald-700 mt-2">A student wellness hub, built by students for students.</p>
+            
+            <nav class="mt-6 flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0">
+                <!-- These links trigger the showPage() JavaScript function -->
+                <button id="nav-home" class="nav-button bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition">Home</button>
+                <button id="nav-resources" class="nav-button bg-emerald-100 text-emerald-800 px-4 py-2 rounded-lg hover:bg-emerald-200 transition">Resources</button>
+                <button id="nav-breathe" class="nav-button bg-emerald-100 text-emerald-800 px-4 py-2 rounded-lg hover:bg-emerald-200 transition">Breathe</button>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <!-- All 'page' divs are hidden by default, and JS will show the correct one. -->
+        <main id="content">
+
+            <!-- ======================= -->
+            <!-- HOME PAGE (V1.0)        -->
+            <!-- ======================= -->
+            <div id="page-home" class="page space-y-8">
+                <h2 class="text-3xl font-semibold">Welcome!</h2>
+                <p class="text-lg leading-relaxed">
+                    College is tough. We get it. This site is a collection of simple tools, articles, and resources to help you
+                    catch your breath, find your focus, and remember that you're not alone.
+                </p>
+
+                <h3 class="text-2xl font-semibold border-t border-emerald-200 pt-6">Quick Reads</h3>
+                
+                <!-- Article Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Article 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-emerald-100">
+                        <h4 class="text-xl font-bold mb-2">5-Minute Mindfulness</h4>
+                        <p class="mb-4">You don't need an hour. Just five minutes of focused breathing can reset your entire day. Here's how to start.</p>
+                        <button class="article-link text-emerald-600 font-semibold hover:underline" data-target="page-article-mindfulness">Read more &rarr;</button>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-emerald-100">
+                        <h4 class="text-xl font-bold mb-2">Beating Procrastination</h4>
+                        <p class="mb-4">The "just 10 minutes" trick. How to break the cycle of avoidance and get that one thing done.</p>
+                        <button class="article-link text-emerald-600 font-semibold hover:underline" data-target="page-article-procrastination">Read more &rarr;</button>
+                    </div>
+                    <!-- Article 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-emerald-100">
+                        <h4 class="text-xl font-bold mb-2">Dorm Room Workouts</h4>
+                        <p class="mb-4">No gym? No problem. Simple, quiet exercises you can do in your own space to get your blood flowing.</p>
+                        <button class="article-link text-emerald-600 font-semibold hover:underline" data-target="page-article-workouts">Read more &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================= -->
+            <!-- RESOURCES PAGE (V1.0 + Improvement #1) -->
+            <!-- ======================= -->
+            <div id="page-resources" class="page hidden space-y-6">
+                <h2 class="text-3xl font-semibold">Campus Resource Guide</h2>
+                <p class="text-lg">Finding the right help shouldn't be hard. Here's a quick-filter guide to official campus services.</p>
+
+                <!-- IMPROVEMENT #1: The Filter Buttons -->
+                <!-- These buttons have a 'data-filter' attribute that the JS reads. -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium" data-filter="all">All</button>
+                    <button class="filter-btn bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium" data-filter="mental">Mental Health</button>
+                    <button class="filter-btn bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium" data-filter="physical">Physical Health</button>
+                    <button class="filter-btn bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium" data-filter="academic">Academic Support</button>
+                </div>
+
+                <!-- Resource List -->
+                <!-- Each item has a 'data-category' attribute matching the buttons. -->
+                <div id="resource-list" class="space-y-4">
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="mental">
+                        <h3 class="text-xl font-semibold">Counseling & Psych. Services (CAPS)</h3>
+                        <p class="text-emerald-700">Free, confidential counseling for all students.
+                        <br><b>Location:</b> Student Health Building, 2nd Floor
+                        <br><b>Phone:</b>~Number~</p>
+                    </div>
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="physical">
+                        <h3 class="text-xl font-semibold">Student Health Services</h3>
+                        <p class="text-emerald-700">For when you're feeling sick, need a check-up, or have health questions.
+                        <br><b>Location:</b> Student Health Building, 1st Floor
+                        <br><b>Phone:</b>~Number~</p>
+                    </div>
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="academic">
+                        <h3 class="text-xl font-semibold">The Writing Center</h3>
+                        <p class="text-emerald-700">Get help with any paper, at any stage of the writing process.
+                        <br><b>Location:</b> Library, Room 104
+                        <br><b>Website:</b> https://vtopcc.vit.ac.in/vtop/</p>
+                    </div>
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="physical">
+                        <h3 class="text-xl font-semibold">Campus Rec Center (The Gym)</h3>
+                        <p class="text-emerald-700">Access to weights, cardio, basketball courts, and a pool.
+                        <br><b>Location:</b> Above Gazebo
+                        <br><b>Hours:</b> 8am - 8pm, Mon-Fri</p>
+                    </div>
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="mental">
+                        <h3 class="text-xl font-semibold">Accessibility Services</h3>
+                        <p class="text-emerald-700">Support and accommodations for students with disabilities.
+                        <br><b>Location:</b> Warden of the block
+                        <br><b>Phone:</b> ~Number~</p>
+                    </div>
+                    
+                    <div class="resource-item bg-white p-5 rounded-lg shadow border border-emerald-100" data-category="academic">
+                        <h3 class="text-xl font-semibold">Subject Tutoring Hub</h3>
+                        <p class="text-emerald-700">Free drop-in and scheduled tutoring for core subjects (Math, Chem, Phys, etc.).
+                        <br><b>Location:</b> Library, 3rd Floor
+                        <br><b>Website:</b> https://vtopcc.vit.ac.in/vtop/</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================= -->
+            <!-- BREATHE PAGE (Improvement #2) -->
+            <!-- ======================= -->
+            <div id="page-breathe" class="page hidden">
+                <h2 class="text-3xl font-semibold text-center">Just Breathe</h2>
+                <p class="text-lg text-center mb-12">Follow the circle. Take a moment for yourself.</p>
+                
+                <div class="flex flex-col items-center justify-center">
+                    <!-- The Breathing Circle -->
+                    <!-- The 'breathing-circle' class applies the custom CSS animation -->
+                    <div class="breathing-circle w-48 h-48 md:w-64 md:h-64 bg-emerald-400 rounded-full flex items-center justify-center shadow-xl">
+                        <!-- The Text Prompt -->
+                        <!-- This text is changed by the startBreathing() JavaScript function -->
+                        <p id="breathe-text" class="text-2xl md:text-3xl font-bold text-white text-center"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ======================= -->
+            <!-- ARTICLE PAGES (V1.0)    -->
+            <!-- ======================= -->
+
+            <!-- Article: Mindfulness -->
+            <div id="page-article-mindfulness" class="page hidden space-y-6">
+                <button class="back-to-home text-emerald-600 font-semibold hover:underline">&larr; Back to all articles</button>
+                <h2 class="text-3xl font-semibold">5-Minute Mindfulness</h2>
+                <div class="prose prose-lg prose-emerald max-w-none">
+                    <p>Mindfulness is the practice of paying attention to the present moment on purpose, without judgment. It's a simple way to pull yourself out of "autopilot" mode and reduce stress. You don't need a quiet room or a yoga mat. You can do it right where you are.</p>
+                    
+                    <h4>The 5-Minute Reset:</h4>
+                    <ol>
+                        <li><strong>Set a timer:</strong> Set a 5-minute timer on your phone.</li>
+                        <li><strong>Get comfortable:</strong> Sit in your chair. Place your feet flat on the floor, unclench your jaw, and let your shoulders drop. You can close your eyes or just rest them on a point in front of you.</li>
+                        <li><strong>Focus on your breath:</strong> Don't try to change it. Just notice it. Feel the air coming into your nose. Feel your chest or belly expand. Notice the air leaving your body.</li>
+                        <li><strong>Notice your thoughts:</strong> Your mind *will* wander. That's what minds do. When you notice it wandering (to your to-do list, to a class, to what's for dinner), just gently say "thinking" to yourself and bring your focus back to your breath.</li>
+                        <li><strong>Be kind to yourself:</strong> The goal isn't to have zero thoughts. The goal is to just *notice* your thoughts and come back to your breath. Every time you come back, you are succeeding.</li>
+                    </ol>
+                    <p>That's it. When the timer goes off, take one more deep breath and continue with your day.</p>
+                </div>
+            </div>
+
+            <!-- Article: Procrastination -->
+            <div id="page-article-procrastination" class="page hidden space-y-6">
+                <button class="back-to-home text-emerald-600 font-semibold hover:underline">&larr; Back to all articles</button>
+                <h2 class="text-3xl font-semibold">Beating Procrastination</h2>
+                <div class="prose prose-lg prose-emerald max-w-none">
+                    <p>We procrastinate because the task feels too big, too boring, or too stressful. The secret isn't "motivation"—it's building momentum. The easiest way to do that is with the "10-Minute" trick.</p>
+                    
+                    <h4>The 10-Minute Trick:</h4>
+                    <ol>
+                        <li><strong>Pick ONE thing:</strong> Don't look at your whole to-do list. Just pick the *one* thing you are avoiding the most.</li>
+                        <li><strong>Set a 10-minute timer:</strong> Commit to working on that one task, and *only* that task, for just 10 minutes. Anyone can do 10 minutes.</li>
+                        <li><strong>The "No-Distractions" Rule:</strong> For those 10 minutes, put your phone on silent and in another room. Close all other tabs. Give it your full focus.</li>
+                        <li><strong>When the timer goes off...</strong> you have a choice:
+                            <ul>
+                                <li>If you're in the groove, great! Keep going. You've already overcome the hardest part (starting).</li>
+                                <li>If you're still hating it, that's fine too. Stop. You're done for now. You've still made 10 minutes of progress, which is infinitely more than zero.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>More often than not, just starting is enough to break the mental barrier. You'll find yourself working for 20 or 30 minutes without even realizing it.</p>
+                </div>
+            </div>
+
+            <!-- Article: Workouts -->
+            <div id="page-article-workouts" class="page hidden space-y-6">
+                <button class="back-to-home text-emerald-600 font-semibold hover:underline">&larr; Back to all articles</button>
+                <h2 class="text-3xl font-semibold">Dorm Room Workouts</h2>
+                <div class="prose prose-lg prose-emerald max-w-none">
+                    <p>Stuck inside? You can still get a great workout in a small space with zero equipment. Try this simple circuit. Do each exercise for 45 seconds, rest for 15 seconds, then move to the next. Repeat the whole circuit 3 times.</p>
+                    
+                    <h4>The Circuit:</h4>
+                    <ul>
+                        <li><strong>Bodyweight Squats:</strong> Stand with feet shoulder-width apart. Lower your hips as if sitting in a chair, keeping your chest up and back straight.</li>
+                        <li><strong>Push-ups (or Knee Push-ups):</strong> Keep your body in a straight line from head to heels (or knees). Lower your chest toward the floor and push back up.</li>
+                        <li><strong>Glute Bridges:</strong> Lie on your back with knees bent and feet flat on the floor. Squeeze your glutes to lift your hips off the floor until your body forms a straight line from shoulders to knees.</li>
+                        <li><strong>Plank:</strong> Hold a push-up position, either on your hands or your forearms. Keep your core tight and don't let your hips sag.</li>
+                        <li><strong>Jumping Jacks:</strong> A classic for a reason! Gets your heart rate up. If you need to be quiet, do "step jacks" instead (stepping one foot out at a time).</li>
+                    </ul>
+                    <p>This whole workout takes about 15 minutes, gets your heart pumping, and helps clear your mind—all without leaving your room.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-emerald-600 border-t border-emerald-200 mt-12 pt-6">
+            <p>&copy; 2025 The Unwind Project. A multidisciplinary student concept.</p>
+        </footer>
+
+    </div> <!-- End Main Container -->
+
+    <!-- 4. Link to your new JavaScript file -->
+    <!-- 'defer' tells the browser to wait until the HTML is parsed before running the script -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>

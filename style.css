@@ -1,0 +1,29 @@
+/* Use the Inter font family */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom animation for the breathing tool (Improvement #2) */
+.breathing-circle {
+    /* This animation 'breathe' runs for 8 seconds, loops forever,
+       and uses ease-in-out for smooth transitions. */
+    animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    /* At the start, the circle is small and slightly faded */
+    0% {
+        transform: scale(0.7);
+        opacity: 0.7;
+    }
+    /* At the halfway point (4s), it's at full size and opacity */
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    /* At the end, it returns to the small, faded state */
+    100% {
+        transform: scale(0.7);
+        opacity: 0.7;
+    }
+}
